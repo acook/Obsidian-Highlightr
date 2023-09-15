@@ -18,17 +18,15 @@ const highlighterMenu = (
 
     const menu = new Menu() as unknown as EnhancedMenu;
 
-    // menu.setUseNativeMenu(false);
-
-    const menuDom = menu.dom;
-    menuDom.addClass("highlighterContainer");
+    const menu = new Menu(plugin.app);
+    (menu as any).dom.addClass('highlighterContainer');
 
     settings.highlighterOrder.forEach((highlighter) => {
-      menu.addItem((highlighterItem) => {
-        highlighterItem.setTitle(highlighter);
-        highlighterItem.setIcon(`highlightr-pen-${highlighter}`.toLowerCase());
-        highlighterItem.onClick(() => {
-          app.commands.executeCommandById(`highlightr-plugin:${highlighter}`);
+      menu.addItem((item) => {
+        item.setTitle(highlighter);
+        item.setIcon(`highlightr-pen-${highlighter}`.toLowerCase());
+        item.onClick(() => {
+          (app as any).commands.executeCommandById(`highlightr-plugin:${highlighter}`);
         });
       });
     });
