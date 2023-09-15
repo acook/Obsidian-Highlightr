@@ -16,9 +16,7 @@ const highlighterMenu = (
     const cursor = editor.getCursor("from");
     let coords: Coords;
 
-    const menu = new Menu() as unknown as EnhancedMenu;
-
-    const menu = new Menu(plugin.app);
+    const menu = new Menu();
     (menu as any).dom.addClass('highlighterContainer');
 
     settings.highlighterOrder.forEach((highlighter) => {
@@ -26,7 +24,7 @@ const highlighterMenu = (
         item.setTitle(highlighter);
         item.setIcon(`highlightr-pen-${highlighter}`.toLowerCase());
         item.onClick(() => {
-          (app as any).commands.executeCommandById(`highlightr-plugin:${highlighter}`);
+          (app as any).commands.executeCommandById(`highlightr-plugin-enhanced:${highlighter}`);
         });
       });
     });

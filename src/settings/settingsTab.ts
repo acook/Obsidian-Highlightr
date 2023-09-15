@@ -259,7 +259,7 @@ export class HighlightrSettingTab extends PluginSettingTab {
             .onClick(async () => {
               new Notice(`${highlighter} highlight deleted`);
               (this.app as any).commands.removeCommand(
-                `highlightr-plugin:${highlighter}`
+                `highlightr-plugin-enhanced:${highlighter}`
               );
               delete this.plugin.settings.highlighters[highlighter];
               this.plugin.settings.highlighterOrder.remove(highlighter);
